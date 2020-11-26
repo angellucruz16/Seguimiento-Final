@@ -1,14 +1,25 @@
 package modelo;
 
-public class Persona {
 
+public class Persona implements Comparable, Runnable {
 
+	public Persona (boolean sano, boolean infectado, boolean recuperado, int id) {
+		this.infectado = infectado;
+		this.sano = sano;
+		this.recuperado = recuperado;
+		this.id = id;
+		
+	} //CONSTRUCTOR
+	
+	
 	private boolean infectado;
 	private boolean sano;
 	private boolean recuperado;
 	private int tiempoInfectado;
 	private int momentoInfeccion;
 	private int id;
+	
+	
 
 	public boolean getInfectado () {
 		return infectado;
@@ -54,6 +65,16 @@ public class Persona {
 	
 	public void setTiempoInfectado (int tiempo) {
 		tiempoInfectado = tiempo;
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }
