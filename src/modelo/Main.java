@@ -7,26 +7,26 @@ import java.io.FileReader;
 
 public class Main {
 
-public Main ( ) {
-	
-	try {
-		
-		leerTxt();
-		llenarPersonas();
-		
-		tiempo = 0; 
-		
-	} catch (Exception e) {
-		// TODO: handle exception
+	public Main ( ) {
+
+		try {
+
+			leerTxt();
+			llenarPersonas();
+
+			tiempo = System.currentTimeMillis(); 
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
-}
 
 
 	private int tamArregloPersonas;
 	private int numInfectados;
 	private int numSanos;
 	private int numRecuperados;
-	private int tiempo;
+	private long tiempo;
 
 	private Persona [] arregloPersonas;
 	private Persona [] arregloInfectados;
@@ -142,6 +142,7 @@ public Main ( ) {
 			i++;
 		}
 	}
+
 } //CLASE
 
 
