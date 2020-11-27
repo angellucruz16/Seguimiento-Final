@@ -8,23 +8,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public Main ( ) {
-
-		try {
-			leerTxt();
-			llenarPersonas();
-			System.out.println(arregloPersonas.length);
-			
-			tiempo = System.currentTimeMillis();
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage());
-		}
-
-	} //MAIN
-
-
+	
 	private int tamArregloPersonas;
 	private int numInfectados;
 	private int numSanos;
@@ -42,22 +26,79 @@ public class Main {
 	private ArrayList<Persona> arregloRecuperados;
 	private ArrayList<Persona> arregloSanos;
 
+	public Main ( ) {
+
+		try {
+			
+			leerTxt();
+			llenarPersonas();
+			System.out.println(arregloPersonas.length);
+			
+			tiempo = System.currentTimeMillis();
+
+		} catch (Exception e) {
+			
+			System.out.println(e.getMessage());
+		}
+
+	} //MAIN
+
+	public void actualizarEstado () {
+
+		for (Persona persona : arregloPersonas) {
+			if(persona.getInfectado()){
+				
+				arregloInfectados.remove(persona);
+				arregloRecuperados.add(persona);
+				numInfectados--;
+				numRecuperados++;
+			}
+		}
+	} //ACTUALIZAR ESTADO
+
 	public Persona [] getArregloPersonas () {
 
 		return arregloPersonas;
-
-
-	} 
+		
+	}  //GET ARREGLO PERSONAS
 
 
 	public ArrayList<Persona> getArregloRecuperados () {
-
 		return arregloRecuperados;
+	} //GET ARREGLO RECUPERADOS
 
+	public int getInfectados() {
+		return numInfectados;
+	} //NUMINFECTADOS
 
+	public int getRecuperados() {
+		return numRecuperados;
+	} //GET RECUPERADOS
+
+	public int getSanos() {
+		return numSanos;
+	} //GETSANOS
+
+	public void infectar (int id) throws Exception{
+
+		for (Persona persona : arregloPersonas) {
+			
+			if (persona.getId()==id) {
+				
+				arregloInfectados.add(persona);
+				arregloSanos.remove(persona);
+				numSanos--;
+				// persona.run();
+				System.out.println(numInfectados);
+				numInfectados++;
+				if (numInfectados == 30) {
+					System.out.println("Mas del 30% se ha contagiado.");
+				}
+				persona.infectar(System.currentTimeMillis());
+			}
+		}
 	}
-
-
+	
 	public void leerTxt () throws Exception {
 
 		File file = new File ("../file.txt"); 
@@ -68,10 +109,7 @@ public class Main {
 
 		int contador = 1;
 
-
-
-		while ((linea = br.readLine()) != null) 
-		{	  
+		while ((linea = br.readLine()) != null) {	  
 
 			String [] dividirLinea = linea.split(":");
 
@@ -89,13 +127,13 @@ public class Main {
 
 			} else if (contador ==2 ) {
 
-				numInfectados = Integer.parseInt(dividirLinea [1]);
+				numInfectados = Integer.parseInt(dividirLinea[1]);
 
-				arregloRecuperados = new ArrayList<Persona>() ;
+				arregloInfectados = new ArrayList<Persona>();
 
-				for (int i = 0 ; i < numInfectados; i++ ) {
+				for (int i = 0; i < numInfectados; i++) {
 
-					arregloInfectados.add( new Persona(false, true , false, numSanos + i+1));
+					arregloInfectados.add(new Persona(false, true, false, numSanos + i + 1));
 
 				} 
 
@@ -109,58 +147,15 @@ public class Main {
 
 					arregloRecuperados.add(new Persona(false, false , true, numSanos + numInfectados + i+1));
 
-				} 	
+				} 
+				
 			}		
 			contador ++;
 		}
+		
 	} //LEERTXT
 
 
-	public String [] ordenarColor () {
-		return null;
-
-	}
-
-	public String [] ordenarNum () {
-		return null;
-
-	}
-
-	public void actualizarEstado () {
-
-		for (Persona persona : arregloPersonas) {
-			if(persona.getInfectado())
-			{
-
-				arregloInfectados.remove(persona);
-				arregloRecuperados.add(persona);
-				numInfectados--;
-				numRecuperados++;
-			}
-		}
-	} //ACTUALIZAR ESTADO
-	
-	
-	public void infectar (int id) throws Exception{
-
-		for (Persona persona : arregloPersonas) {
-			
-			if (persona.getId()==id) {
-				
-				persona.infectar(System.currentTimeMillis());
-				arregloInfectados.add(persona);
-				arregloSanos.remove(persona);
-				numInfectados++;
-				System.out.println(numInfectados);
-				numSanos--;
-				
-				//persona.run();
-				if((numInfectados/tamArregloPersonas)*100>30)
-					throw new Exception("Más del 30% se ha contagiado.");
-			}
-		}
-	}
-	
 	public void llenarPersonas () {
 
 		tamArregloPersonas = numInfectados + numSanos + numRecuperados;
@@ -180,6 +175,7 @@ public class Main {
 			arregloPersonas [i] = persona ;
 			i++;
 		}
+		
 		for (Persona persona : arregloRecuperados ) {
 
 			arregloPersonas [i] = persona ;
@@ -187,6 +183,21 @@ public class Main {
 		}
 		
 	} //LLENARPERSONAS
+	public String [] ordenarColor () {
+		return null;
+
+	}
+
+	public String [] ordenarNum () {
+		return null;
+
+	}
+
+	
+	
+	
+
+	
 
 } //CLASE
 
