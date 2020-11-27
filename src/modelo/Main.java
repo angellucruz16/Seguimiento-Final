@@ -19,7 +19,8 @@ public class Main {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-	}
+		
+	} //MAIN
 
 
 	private int tamArregloPersonas;
@@ -27,18 +28,33 @@ public class Main {
 	private int numSanos;
 	private int numRecuperados;
 	private long tiempo;
-
+	
+	
 	private Persona [] arregloPersonas;
-	private Persona [] arregloInfectados;
-	private Persona [] arregloRecuperados;
-	private Persona [] arregloSanos;
+	
+	//private Persona [] arregloInfectados;
+	//private Persona [] arregloRecuperados;
+	//private Persona [] arregloSanos;
+	
+	private ArrayList<Persona> arregloInfectados;
+	private ArrayList<Persona> arregloRecuperados;
+	private ArrayList<Persona> arregloSanos;
 
 	public Persona [] getArregloPersonas () {
 
 		return arregloPersonas;
 
 
+	} 
+	
+
+	public ArrayList<Persona> getArregloRecuperados () {
+
+		return arregloRecuperados;
+
+
 	}
+
 
 	public void leerTxt () throws Exception {
 
@@ -65,9 +81,9 @@ public class Main {
 
 				for (int i = 0 ; i < numSanos; i++ ) {
 
-					arregloSanos [i] = new Persona(true, false, false, i+1);
+					arregloSanos.add(new Persona(true, false, false, i+1));
 
-				} 
+				}
 
 			} else if (contador ==2 ) {
 
@@ -77,7 +93,7 @@ public class Main {
 
 				for (int i = 0 ; i < numInfectados; i++ ) {
 
-					arregloInfectados [i] = new Persona(false, true , false, numSanos + i+1);
+					arregloInfectados.add( new Persona(false, true , false, numSanos + i+1));
 
 				} 
 
@@ -89,14 +105,14 @@ public class Main {
 
 				for (int i = 0 ; i < numRecuperados; i++ ) {
 
-					arregloRecuperados [i] = new Persona(false, false , true, numSanos + numInfectados + i+1);
+					arregloRecuperados.add(new Persona(false, false , true, numSanos + numInfectados + i+1));
 
-				} 
+				} 	
 
 				contador ++;
 			}			
 		}
-	}
+	
 
 
 	public String [] ordenarColor () {
@@ -111,7 +127,20 @@ public class Main {
 
 	public void actualizarEstado () {
 
+		for (Persona persona : arregloPersonas) {
+			if(persona.getInfectado())
+			{
+
+				arregloInfectados.remove(persona);
+				arregloRecuperados.add(persona);
+				numInfectados--;
+				numRecuperados++;
+			}
+		}
+
 	}
+	
+	
 	public void infectar () {
 
 
