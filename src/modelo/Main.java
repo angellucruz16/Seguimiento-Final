@@ -183,6 +183,7 @@ public class Main {
 		}
 		
 	} //LLENARPERSONAS
+	
 	public String [] ordenarColor () {
 		return null;
 
@@ -192,9 +193,18 @@ public class Main {
 		return null;
 
 	}
-
 	
-	
+	public void recuperar(int id) {
+		for (Persona persona : arregloPersonas) {
+			if (persona.getId() == id) {
+				persona.recuperar();
+				arregloInfectados.remove(persona);
+				arregloRecuperados.add(persona);
+				numInfectados--;
+				numRecuperados++;
+			}
+		}
+	}
 	
 
 	
