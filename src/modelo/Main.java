@@ -11,14 +11,15 @@ public class Main {
 	public Main ( ) {
 
 		try {
-
 			leerTxt();
 			llenarPersonas();
-
-			tiempo = System.currentTimeMillis(); 
+			System.out.println(arregloPersonas.length);
+			
+			tiempo = System.currentTimeMillis();
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 
 	} //MAIN

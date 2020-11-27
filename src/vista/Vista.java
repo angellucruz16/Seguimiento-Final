@@ -1,9 +1,8 @@
 package vista;
-
 import controlador.Controlador;
 import modelo.Main;
 import modelo.Persona;
-//5
+
 import processing.core.PApplet;
 public class Vista extends PApplet{
 
@@ -28,6 +27,19 @@ public class Vista extends PApplet{
 	} //SETUP
 	
 	public void draw() {	
+		
+		background(250);
+		
+		for (Bolita bolita : bolitas) {
+			//bolita.render();
+			bolita.setBolitas(bolitas);
+			
+			bolita.run();
+			
+		}
+		actualizarBolitas();
+
+	
 	} //DRAW
 	
 	public void crearBolitas() {
