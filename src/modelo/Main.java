@@ -139,12 +139,6 @@ public class Main {
 
 	}
 
-
-	public void infectar () {
-
-
-	}
-
 	public void llenarPersonas () {
 
 		tamArregloPersonas = numInfectados + numSanos + numRecuperados;
