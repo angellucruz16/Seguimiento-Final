@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -77,7 +78,7 @@ public class Main {
 
 				numSanos = Integer.parseInt(dividirLinea [1]);
 
-				arregloSanos = new Persona [numSanos] ;
+				arregloInfectados =new ArrayList<Persona>() ;
 
 				for (int i = 0 ; i < numSanos; i++ ) {
 
@@ -89,7 +90,7 @@ public class Main {
 
 				numInfectados = Integer.parseInt(dividirLinea [1]);
 
-				arregloInfectados = new Persona [numInfectados];
+				arregloRecuperados = new ArrayList<Persona>() ;
 
 				for (int i = 0 ; i < numInfectados; i++ ) {
 
@@ -101,7 +102,7 @@ public class Main {
 
 				numRecuperados = Integer.parseInt(dividirLinea [1]);
 
-				arregloRecuperados = new Persona [numRecuperados];
+				arregloRecuperados = new ArrayList<Persona>() ;
 
 				for (int i = 0 ; i < numRecuperados; i++ ) {
 

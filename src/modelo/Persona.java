@@ -16,7 +16,7 @@ public class Persona implements Comparable, Runnable {
 	private boolean sano;
 	private boolean recuperado;
 	private int tiempoInfectado;
-	private int momentoInfeccion;
+	private long momentoInfeccion;
 	private int id;
 	
 	
@@ -39,7 +39,7 @@ public class Persona implements Comparable, Runnable {
 		
 	} //GET TIEMPO INFECTADO
 	
-	public int getMomentoInfeccion () {
+	public long getMomentoInfeccion () {
 		return momentoInfeccion;
 		
 	} //GET MOMENTO INFECCION
@@ -48,13 +48,13 @@ public class Persona implements Comparable, Runnable {
 		return id;
 	} //GET ID
 
-	public void infectar (int momentoInfeccion) throws Exception {
+	public void infectar (long l) throws Exception {
 
 		sano = false;
 		infectado = true;
 		recuperado = false;
 
-		this.momentoInfeccion = momentoInfeccion; 
+		this.momentoInfeccion = (long) l; 
 		
 		Exception contagioException = new Exception("Contagiado");
 		throw contagioException;
