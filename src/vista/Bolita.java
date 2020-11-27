@@ -31,6 +31,7 @@ public class Bolita implements Runnable{
 	boolean sano;
 	boolean recuperado;
 
+	int momentoInfeccion =0;
 
 
 	public Bolita(int id, PApplet sketch, boolean infectado, boolean sano, boolean recuperado, Controlador controlador) {
@@ -104,6 +105,7 @@ public class Bolita implements Runnable{
 
 				}
 			} else {
+				
 				momentoInfeccion++;
 				if (momentoInfeccion == 140000) {
 					momentoInfeccion = 0;

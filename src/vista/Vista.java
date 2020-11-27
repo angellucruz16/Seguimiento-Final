@@ -9,7 +9,7 @@ import processing.core.PApplet;
 public class Vista extends PApplet{
 	
 	public static void main(String[] args) {
-		String[] processingArgs = { "Main" };
+		String[] processingArgs = { "Vista" };
 		Vista mySketch = new Vista();
 		PApplet.runSketch(processingArgs, mySketch);
 		// PApplet.main("process.Pro");
@@ -56,8 +56,6 @@ public class Vista extends PApplet{
 		this.fill(0, 255, 0);
 
 		this.text("Sanos: " + controlador.getSanos(), 20, 100);
-	}
-
 	
 	} //DRAW
 	
