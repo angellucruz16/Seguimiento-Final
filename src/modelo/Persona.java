@@ -23,54 +23,75 @@ public class Persona implements Comparable, Runnable {
 
 	public boolean getInfectado () {
 		return infectado;
-	};
+	} //GET INFECTADO
+	
 	public boolean getSano () {
 		return sano;
-	}
+	} //SANO
 
 	public boolean getRecuperado () {
 		return recuperado;
-	}
+		
+	} //GET RECUPERADO
 
 	public int getTiempoInfectado () {
 		return tiempoInfectado;
-	}
+		
+	} //GET TIEMPO INFECTADO
+	
 	public int getMomentoInfeccion () {
 		return momentoInfeccion;
-	}
+		
+	} //GET MOMENTO INFECCION
 
 	public int getId () {
 		return id;
-	}
+	} //GET ID
 
-	public void infectar (int momentoInfeccion) {
+	public void infectar (int momentoInfeccion) throws Exception {
 
 		sano = false;
 		infectado = true;
 		recuperado = false;
 
 		this.momentoInfeccion = momentoInfeccion; 
+		
+		Exception contagioException = new Exception("Contagiado");
+		throw contagioException;
 
-	}
+	} //INFECTAR
+	
 	public void recuperar () {
 
 		infectado = false;
 		sano = false;
 		recuperado = true;
 
-	}
+	} //RECUPERAR
+	
 	public int compareTo (Persona p) {
 		return 0;
-	}
+		
+	} //PERSONA P
 	
 	public void setTiempoInfectado (int tiempo) {
 		tiempoInfectado = tiempo;
-	}
+		
+	} //SET TIEMPO
+	
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		
-	}
+		System.out.println(infectado);
+		while(infectado  && System.currentTimeMillis()-momentoInfeccion<=14000)
+		{
+			
+		}
+		recuperar();
+		
+	} //RUN
+	
 	@Override
 	public int compareTo(Object arg0) {
 		// TODO Auto-generated method stub
