@@ -19,7 +19,7 @@ public class Main {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 	} //MAIN
 
 
@@ -28,14 +28,14 @@ public class Main {
 	private int numSanos;
 	private int numRecuperados;
 	private long tiempo;
-	
-	
+
+
 	private Persona [] arregloPersonas;
-	
+
 	//private Persona [] arregloInfectados;
 	//private Persona [] arregloRecuperados;
 	//private Persona [] arregloSanos;
-	
+
 	private ArrayList<Persona> arregloInfectados;
 	private ArrayList<Persona> arregloRecuperados;
 	private ArrayList<Persona> arregloSanos;
@@ -46,7 +46,7 @@ public class Main {
 
 
 	} 
-	
+
 
 	public ArrayList<Persona> getArregloRecuperados () {
 
@@ -108,11 +108,10 @@ public class Main {
 					arregloRecuperados.add(new Persona(false, false , true, numSanos + numInfectados + i+1));
 
 				} 	
-
-				contador ++;
-			}			
+			}		
+			contador ++;
 		}
-	
+	}
 
 
 	public String [] ordenarColor () {
@@ -139,8 +138,8 @@ public class Main {
 		}
 
 	}
-	
-	
+
+
 	public void infectar () {
 
 
