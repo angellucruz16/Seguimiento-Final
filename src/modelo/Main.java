@@ -111,7 +111,7 @@ public class Main {
 			}		
 			contador ++;
 		}
-	}
+	} //LEERTXT
 
 
 	public String [] ordenarColor () {
@@ -136,9 +136,29 @@ public class Main {
 				numRecuperados++;
 			}
 		}
+	} //ACTUALIZAR ESTADO
+	
+	
+	public void infectar (int id) throws Exception{
 
+		for (Persona persona : arregloPersonas) {
+			
+			if (persona.getId()==id) {
+				
+				persona.infectar(System.currentTimeMillis());
+				arregloInfectados.add(persona);
+				arregloSanos.remove(persona);
+				numInfectados++;
+				System.out.println(numInfectados);
+				numSanos--;
+				
+				//persona.run();
+				if((numInfectados/tamArregloPersonas)*100>30)
+					throw new Exception("Más del 30% se ha contagiado.");
+			}
+		}
 	}
-
+	
 	public void llenarPersonas () {
 
 		tamArregloPersonas = numInfectados + numSanos + numRecuperados;
@@ -163,7 +183,8 @@ public class Main {
 			arregloPersonas [i] = persona ;
 			i++;
 		}
-	}
+		
+	} //LLENARPERSONAS
 
 } //CLASE
 
